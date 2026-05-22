@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bb1kmm66qtugi"]
+
+[ext_resource type="Script" uid="uid://dpk2siqhrp1p0" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://0wr8cbkb5oxg" path="res://icon.svg" id="1_hghv2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1f0kj"]
+radius = 0.5126953
+height = 1.5297852
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
+atlas = ExtResource("1_hghv2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
+atlas = ExtResource("1_hghv2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0830c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afpow")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_287tu")
+}],
+"loop": false,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1634501158]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_1f0kj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=917317985]
+transform = Transform3D(0.920176, 0, 0, 0, 1, 0, 0, 0, 1.2021039, 0, 0.79003525, 0)
+shape = SubResource("CapsuleShape3D_1f0kj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1100531399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61261946, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_0830c")
+animation = &"idle"
+autoplay = "idle"

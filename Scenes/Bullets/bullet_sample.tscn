@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0bjn6d28rh30"]
+
+[ext_resource type="Script" uid="uid://dcxkmnbfqxt55" path="res://Scripts/bullets/bullet_rigitbody.gd" id="1_acsjx"]
+[ext_resource type="SpriteFrames" uid="uid://cc32s6txmu4is" path="res://Assets/SpriteFrames/Bullet_sample_sprite.tres" id="2_acsjx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nutld"]
+
+[node name="BulletSample" type="RigidBody3D" unique_id=1063724031]
+gravity_scale = 0.0
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_acsjx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=61722722]
+transform = Transform3D(-0.015931586, 0.4838651, 0, -2.4871788, -0.003099391, 0, 0, 0, 0.9369881, -0.021490628, 0.9794227, -0.16719416)
+shape = SubResource("CapsuleShape3D_nutld")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=882671979]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.8577914, 0)
+billboard = 1
+sprite_frames = ExtResource("2_acsjx")
+animation = &"idle"

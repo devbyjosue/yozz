@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cc32s6txmu4is"]
+
+[ext_resource type="Texture2D" uid="uid://vyiryn0jip4h" path="res://Assets/Gun/bullet_animation_sample.png" id="1_qhv1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3k2k"]
+atlas = ExtResource("1_qhv1r")
+region = Rect2(0, 0, 841, 1781)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2um37"]
+atlas = ExtResource("1_qhv1r")
+region = Rect2(800, 890, 1700, 890)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01th2"]
+atlas = ExtResource("1_qhv1r")
+region = Rect2(2523, 0, 841, 1781)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey5j8"]
+atlas = ExtResource("1_qhv1r")
+region = Rect2(800, 0, 1700, 890)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3k2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2um37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01th2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey5j8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
