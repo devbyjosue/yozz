@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl0pik37qut70"
-path.s3tc="res://.godot/imported/hand_shoot_sample.png-565390722f5fbbec9d66473f167e2399.s3tc.ctex"
+uid="uid://bln7olf32ogdw"
+path.s3tc="res://.godot/imported/book_ss.png-82abf3915958ed1b6227ac9e186f6d7f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Gun/hand_shoot_sample.png"
-dest_files=["res://.godot/imported/hand_shoot_sample.png-565390722f5fbbec9d66473f167e2399.s3tc.ctex"]
+source_file="res://Assets/weapons/book/book_ss.png"
+dest_files=["res://.godot/imported/book_ss.png-82abf3915958ed1b6227ac9e186f6d7f.s3tc.ctex"]
 
 [params]
 

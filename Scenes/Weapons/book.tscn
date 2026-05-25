@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ce2rqtcu7e3o6"]
+
+[ext_resource type="Texture2D" uid="uid://gnm2v0y6fpwh" path="res://Assets/weapons/book/book_ssv2.png" id="1_aui1a"]
+[ext_resource type="Script" uid="uid://dg2umgfkek4li" path="res://Scripts/weapons/book/book.gd" id="1_pjnxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjnxc"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(824, 0, 412, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5h52"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(1236, 0, 412, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lrh8"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(0, 360, 412, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxwvo"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(412, 360, 412, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wusbu"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(824, 360, 412, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xjsb"]
+atlas = ExtResource("1_aui1a")
+region = Rect2(824, 360, 412, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2trg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjnxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5h52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lrh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxwvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wusbu")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xjsb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Book" type="Node3D" unique_id=1225502073]
+script = ExtResource("1_pjnxc")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1403347320]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_m2trg")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9653099

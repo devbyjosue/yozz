@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c5fsl2k1wx1l8"]
+
+[ext_resource type="Texture2D" uid="uid://dl0pik37qut70" path="res://Assets/Gun/hand_shoot_sample.png" id="1_fh08d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt170"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(0, 0, 418, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uks6m"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(418, 0, 418, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dhlv"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(836, 0, 418, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ks8u"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(1254, 0, 418, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2l8j"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(0, 540, 418, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgt60"]
+atlas = ExtResource("1_fh08d")
+region = Rect2(0, 0, 418, 540)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt170")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uks6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dhlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ks8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2l8j")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgt60")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]

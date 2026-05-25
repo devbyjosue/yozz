@@ -1,9 +1,15 @@
 extends CharacterBody3D
 
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $CanvasLayer/GunBase/AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $CanvasLayer/GunBase/AnimatedSprite2D
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
+#weapons
+@onready var hand: Node3D = $Hand/Hand
+@onready var book: Node3D = $Hand/Book
+
+# @onready var 
 
 #Player settings
 @export var SPEED = 15.0
@@ -23,13 +29,14 @@ var is_dashing := false
 var dash_timer := 0.0
 
 #Bullet
-@export var current_weapon = "HAND"
+@export var current_weapon = 1
 @export var bullet_scene: PackedScene
 @export var bullet_spawn_offset := Vector3(0, 0, -1) 
 @export var bullet_speed := 20.0
 const BULLET_SAMPLE = preload("res://Scenes/Bullets/bullet_sample.tscn")
 
 #Camera movement
+@onready var animation_player: AnimationPlayer = $Head/Camera3D/AnimationPlayer
 
 
 
@@ -41,8 +48,8 @@ var pitch := 0.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	animated_sprite_2d.animation_finished.connect(shoot_anim_done)
-	$CanvasLayer/DeathScreen/Panel/Button.button_up.connect(restart)
+	#animated_sprite_2d.animation_finished.connect(shoot_anim_done)
+	#$CanvasLayer/DeathScreen/Panel/Button.button_up.connect(restart)
 
 
 func _input(event):
@@ -53,9 +60,11 @@ func _input(event):
 		pitch -= event.relative.y * MOUSE_SENS
 		pitch = clamp(pitch, -MAX_PITCH, MAX_PITCH)
 		rotation_degrees.x = pitch
-		
-	
-		
+
+
+	if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				current_weapon = 2 if current_weapon == 1 else 1
 		
 func _process(delta):
 	if is_on_floor():
@@ -70,8 +79,9 @@ func _process(delta):
 		return
 		
 	
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+	
+	#if Input.is_action_just_pressed("shoot"):
+		#shoot()
 	if Input.is_action_just_pressed("jump") and current_jumps_limit > 0:
 		jump()
 	if Input.is_action_just_pressed("dash"):
@@ -80,11 +90,31 @@ func _process(delta):
 		
 func restart():
 	get_tree().reload_current_scene()
+
+func weapon_select():
+	if Input.is_action_just_pressed("weapon_1"):
+		current_weapon = 1
+	if Input.is_action_just_pressed("weapon_2"):
+		current_weapon = 2
 	
+	if current_weapon == 1: 
+		hand.visible = true
+		if Input.is_action_just_pressed("shoot"): hand.shoot()
+	else: hand.visible = false
 
-
+	if current_weapon == 2: 
+		book.visible = true
+		if Input.is_action_just_pressed("shoot"): book.shoot()
+	else: book.visible = false
+	
+	#if current_weapon == 1: hand.visible = true
+	#else: hand.visible = false
+	
 func _physics_process(delta: float) -> void:
 	if dead: return
+	
+	weapon_select()
+	
 	
 	if not is_on_floor():
 		velocity.y -= (20.0) * delta
@@ -103,6 +133,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		animation_player.play("camera_movement")
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -110,32 +141,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
-	
-	
-func shoot():
-	if !can_shoot:
-		return
-	can_shoot = false
-	animated_sprite_2d.play("shoot") #should be shoot animation
-	if current_weapon == "HAND":
-		animated_sprite_2d.animation_finished.connect(hand_bullet)
-	
-	
-func hand_bullet():
-	var bullet: RigidBody3D = BULLET_SAMPLE.instantiate()
-
-	var cam := $Head/Camera3D
-	var forward = -cam.global_transform.basis.z
-
-	bullet.global_position = cam.global_position + forward * 2.5
-	get_tree().current_scene.add_child(bullet)
-
-	bullet.linear_velocity = forward * bullet_speed
-	
-
-func shoot_anim_done():
-	can_shoot = true
-	animated_sprite_2d.play("idle")
 	
 	
 func jump():

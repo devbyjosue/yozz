@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d1u54kpun5ejl"]
+
+[ext_resource type="Script" uid="uid://baj2164ehn04f" path="res://Scripts/weapons/hand/hand.gd" id="1_jt170"]
+[ext_resource type="SpriteFrames" uid="uid://c5fsl2k1wx1l8" path="res://Assets/SpriteFrames/weapons/hand.tres" id="2_jt170"]
+
+[node name="Hand" type="Node3D" unique_id=1949015005]
+script = ExtResource("1_jt170")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2115561626]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+sprite_frames = ExtResource("2_jt170")
+animation = &"fire"
+autoplay = "idle"
