@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://gnm2v0y6fpwh" path="res://Assets/weapons/book/book_ssv2.png" id="1_aui1a"]
 [ext_resource type="Script" uid="uid://dg2umgfkek4li" path="res://Scripts/weapons/book/book.gd" id="1_pjnxc"]
+[ext_resource type="Script" uid="uid://dkvonh13twgrk" path="res://Scripts/bullets/laser_beam.gd" id="3_i5h52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjnxc"]
 atlas = ExtResource("1_aui1a")
@@ -58,6 +59,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjnxc"]
+shading_mode = 0
+albedo_color = Color(0.93333334, 0.12156863, 0.12156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i5h52"]
+material = SubResource("StandardMaterial3D_pjnxc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjnxc"]
+size = Vector3(0.13696289, 0.3403015, 7.140503)
+
 [node name="Book" type="Node3D" unique_id=1225502073]
 script = ExtResource("1_pjnxc")
 
@@ -67,3 +78,17 @@ sprite_frames = SubResource("SpriteFrames_m2trg")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.9653099
+
+[node name="LaserGun" type="Node3D" parent="." unique_id=1421678159]
+
+[node name="Laser" type="RayCast3D" parent="LaserGun" unique_id=267556793]
+
+[node name="Beam" type="MeshInstance3D" parent="LaserGun/Laser" unique_id=440398588]
+transform = Transform3D(0.09850171, 0, 0, 0, 0.22686158, 0, 0, 0, -6.9626675, 0.006287575, 0, -3.590129)
+mesh = SubResource("BoxMesh_i5h52")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LaserGun/Laser" unique_id=643398452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018188477, -0.013748169, -3.579895)
+visible = false
+shape = SubResource("BoxShape3D_pjnxc")
+script = ExtResource("3_i5h52")

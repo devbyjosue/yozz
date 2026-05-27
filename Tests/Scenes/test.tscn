@@ -61,7 +61,8 @@ transform = Transform3D(1.1568242, 0, 9.313227e-09, 1.1368684e-13, 1.1969557, 3.
 operation = 2
 
 [node name="Floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=547457593]
-transform = Transform3D(32.397, 0, 0, 0, 0.983, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(32.397, 0, 0, 0, 0.983, 0, 0, 0, 30, -5.8154035, 0, 0)
+size = Vector3(2.1971436, 1, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1124534819]
 transform = Transform3D(13.720454, -5.5791297e-06, 0.0011766352, 1.3357077e-05, 5.729734, 1.5282765e-07, -0.01700217, -9.1523407e-07, 0.94952416, -9.534338, 3.1917, -0.0010994673)
@@ -77,13 +78,9 @@ transform = Transform3D(-2.2769699e-07, 0, -2.9017465, 0, 0.8926506, 0, 5.2091, 
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1939454631]
 transform = Transform3D(-2.2769699e-07, 0, -3.9753206, 0, 2.9274757, 0, 5.2091, 0, -1.7376678e-07, -3.9734578, 1.9320817, -7.9681787)
-visible = false
 
 [node name="Player" parent="." unique_id=1840664573 groups=["player"] instance=ExtResource("2_cw7un")]
 transform = Transform3D(-0.08454736, 0, -0.9964195, 0, 1, 0, 0.9964195, 0, -0.08454736, -12.478755, 1.2774892, -2.8318276)
-
-[node name="Enemy" parent="." unique_id=1634501158 instance=ExtResource("2_275hl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2261453, 0.78137887, -3.0585814)
 
 [node name="Enemy2" parent="." unique_id=2126220065 instance=ExtResource("2_275hl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.418991, 1.1072963, -51.613506)
@@ -96,9 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.55062, 1.1072963, -51.6135
 
 [node name="Enemy5" parent="." unique_id=519763248 instance=ExtResource("2_275hl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2261453, 1.1072963, -69.491745)
-
-[node name="Enemy6" parent="." unique_id=652838237 instance=ExtResource("2_275hl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9892478, 0.78137887, -3.0585814)
 
 [node name="Enemy7" parent="." unique_id=1132839640 instance=ExtResource("2_275hl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.414043, 1.1072963, -51.613506)

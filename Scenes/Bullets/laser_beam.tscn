@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfevumnqorinq"]
+
+[ext_resource type="Script" uid="uid://dkvonh13twgrk" path="res://Scripts/bullets/laser_beam.gd" id="1_1t1hv"]
+
+[node name="LaserBeam" type="RayCast3D" unique_id=275681607]
+enabled = false
+script = ExtResource("1_1t1hv")
+
+[node name="Beam" type="MeshInstance3D" parent="." unique_id=82918921]

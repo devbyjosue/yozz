@@ -6,9 +6,10 @@ extends Node3D
 @export var bullet_speed = 20.0 
 @export var bullet_spawn_distance: float = 2.5
 
+var can_shoot := true
 
 func _ready() -> void:
-	pass
+	animated_sprite_3d.play("idle")
 
 
 func _process(delta: float) -> void:
@@ -16,6 +17,9 @@ func _process(delta: float) -> void:
 
 
 func shoot():
+	if !can_shoot:
+		return
+	can_shoot = false
 	animated_sprite_3d.play("fire")
 	if !animated_sprite_3d.animation_finished.is_connected(_spawn_bullet):
 		animated_sprite_3d.animation_finished.connect(_spawn_bullet)
@@ -31,3 +35,8 @@ func _spawn_bullet():
 	get_tree().current_scene.add_child(bullet)
 	bullet.linear_velocity = forward * bullet_speed
 	
+	_on_aim_finished()
+	
+func _on_aim_finished() -> void:
+	animated_sprite_3d.play("idle")
+	can_shoot = true

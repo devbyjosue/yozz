@@ -8,6 +8,8 @@ extends CharacterBody3D
 #weapons
 @onready var hand: Node3D = $Hand/Hand
 @onready var book: Node3D = $Hand/Book
+@onready var HAND: Node3D = $Hand
+
 
 # @onready var 
 
@@ -92,20 +94,40 @@ func restart():
 	get_tree().reload_current_scene()
 
 func weapon_select():
+	
+	#hotcakes
 	if Input.is_action_just_pressed("weapon_1"):
 		current_weapon = 1
 	if Input.is_action_just_pressed("weapon_2"):
 		current_weapon = 2
 	
-	if current_weapon == 1: 
-		hand.visible = true
-		if Input.is_action_just_pressed("shoot"): hand.shoot()
-	else: hand.visible = false
+	#visuals 
+	#if current_weapon == 1: 
+		#hand.visible = true
+	#elif current_weapon > 1: 
+		#hand.visible = false
+	var children := HAND.get_children()
+	for i in range(children.size()):
+		var child := children[i]
+		if child is Node3D:
+			(child as Node3D).visible = (i + 1 == current_weapon)
+		
+	
+	
+	# shooting
+	if current_weapon == 1:
+		if Input.is_action_just_pressed("shoot"):
+			hand.shoot()
 
-	if current_weapon == 2: 
-		book.visible = true
-		if Input.is_action_just_pressed("shoot"): book.shoot()
-	else: book.visible = false
+		#if book.has_method("stop_shoot"):
+			#book.stop_shoot()
+
+	elif current_weapon == 2:
+		if Input.is_action_pressed("shoot"):
+			book.shoot()
+		else:
+			if book.has_method("stop_shoot"):
+				book.stop_shoot()
 	
 	#if current_weapon == 1: hand.visible = true
 	#else: hand.visible = false
