@@ -42,13 +42,13 @@ func _physics_process(_delta: float) -> void:
 	ray.target_position = Vector3(-0.9, 0.9, -max_distance)
 	ray.force_raycast_update()
 
-	var start := ray.global_position
-	var end := ray.to_global(ray.target_position)
+	var forward := -ray.global_transform.basis.z
+	var start := ray.global_position + forward * 0.1
 	
+	var end := ray.to_global(ray.target_position)
 	var hit : Object = null
 	
 	if ray.is_colliding():
-		
 		end = ray.get_collision_point()
 		hit = ray.get_collider()
 	
